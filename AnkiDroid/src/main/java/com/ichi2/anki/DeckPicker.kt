@@ -2168,7 +2168,7 @@ open class DeckPicker :
             return
         }
 
-        if (isDeckAndSubdeckEmpty(did)) {
+        if (areDeckAndSubdecksEmpty(did)) {
             showEmptyDeckSnackbar()
             updateUi()
             return
@@ -2666,7 +2666,7 @@ open class DeckPicker :
      *
      * @param did The id of a deck with no pending cards to review
      */
-    private suspend fun isDeckAndSubdeckEmpty(did: DeckId): Boolean {
+    private suspend fun areDeckAndSubdecksEmpty(did: DeckId): Boolean {
         val node = getNodeByDid(did)
         return withCol {
             node.all { decks.isEmpty(it.did) }
